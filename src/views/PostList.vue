@@ -30,7 +30,8 @@ export default {
   },
   methods:{
     async showPosts(path){
-      this.get(path+this.id,(posts)=>{console.log(posts)})
+      this.get(path+this.id)
+      //this.get(path+this.id,(posts)=>{console.log(posts)})
     },
     
   },

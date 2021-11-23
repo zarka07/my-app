@@ -1,8 +1,16 @@
 <template>
   <div id="app">
-    <Loader v-if="show" />
-    <div v-else><router-view/></div>
-    <button @click="show=!show">change state</button>
+    <template v-if="show" >
+      <Loader />
+    </template>
+    
+    <template v-else>
+      <router-view/>
+    </template>
+    <div>loader current status: {{this.$store.state.loader.loading}}</div>
+    <!-- <Loader :show="showLoader"/>
+    <router-view/>-->
+    <button @click="show=!show">change state</button> 
   </div>
 </template>
 <script>
@@ -10,7 +18,7 @@ import Loader from './components/Loader.vue'
 export default {
   data(){
     return{
-      show:this.$store.state.loading
+      show:this.$store.state.loader.loading
     }
   },
   components: { Loader },
@@ -18,8 +26,12 @@ export default {
     
   },
   computed: {
-    
+    // show() {
+    //   console.log(this.$store.state.loader.loading)
+    //   return this.$store.getters.GET_LOADER;
+    // }
   },
+  
 }
 </script>
 <style>
