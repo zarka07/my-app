@@ -1,10 +1,27 @@
 <template>
   <div id="app">
-    
-    <router-view/>
+    <Loader v-if="show" />
+    <div v-else><router-view/></div>
+    <button @click="show=!show">change state</button>
   </div>
 </template>
-
+<script>
+import Loader from './components/Loader.vue'
+export default {
+  data(){
+    return{
+      show:this.$store.state.loading
+    }
+  },
+  components: { Loader },
+  methods:{
+    
+  },
+  computed: {
+    
+  },
+}
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

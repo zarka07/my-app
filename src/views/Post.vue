@@ -38,9 +38,12 @@ export default {
       }
     },
   created(){
-    
+    this.showPosts(this.commentsPath);
   },
   methods:{
+      async showPosts(path){
+        this.get(path+this.id,(posts)=>{console.log(posts)})
+      },
       back(){
         this.$router.push({name:'PostList'})
       },
