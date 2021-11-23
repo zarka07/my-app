@@ -30,19 +30,21 @@ export default {
       title:'',
       id: this.$route.params.id, 
       comments:[],
-      name:'',
-      email:'',
-      body:'',
+      name: '',
+      email: '',
+      body: '',
+      path: this.id+'/',
+      commentsPath: this.id+'/comments'
       }
     },
   created(){
-    this.getPost(this.id);
-    this.getComments(this.id);
+    
   },
   methods:{
       back(){
         this.$router.push({name:'PostList'})
-      }
+      },
+      
     }
 }
 </script>

@@ -22,13 +22,22 @@ export default {
   name: 'PostList',
   mixins:[getApi],
   data(){
-    return  {posts:'',}
+    return  {
+     posts:'',
+     path:'posts/',
+     id: '2'
+     }
+  },
+  methods:{
+    async showPosts(path){
+      this.get(path+this.id,(posts)=>{console.log(posts)})
+    },
+    
+  },
+  created(){
+    this.showPosts(this.path);
   },
   
-  created(){
-      this.get();
-      console.log('get posts')
-  },
 
 }
 </script>
