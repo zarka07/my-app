@@ -17,7 +17,7 @@
 
 <script>
 // @ is an alias to /src
-import { getApi } from '../mixins/getApi'
+import getApi from '../mixins/getApi'
 export default {
   name: 'PostList',
   mixins:[getApi],

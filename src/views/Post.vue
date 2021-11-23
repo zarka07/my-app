@@ -21,7 +21,7 @@
     </div>
 </template>
 <script>
-import { getApi } from '../mixins/getApi'
+import getApi from '../mixins/getApi'
 export default {
   name: 'Post',
   mixins:[getApi],

@@ -1,5 +1,5 @@
 import axios from 'axios'
-export const getApi = {
+export default{
     
     methods:{
         async get(){
