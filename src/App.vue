@@ -1,35 +1,30 @@
 <template>
   <div id="app">
-    <template v-if="show" >
-      <Loader />
-    </template>
     
-    <template v-else>
-      <router-view/>
-    </template>
-    <div>loader current status: {{this.$store.state.loader.loading}}</div>
-    <!-- <Loader :show="showLoader"/>
-    <router-view/>-->
-    <button @click="show=!show">change state</button> 
+    <div v-if="show=showLoader">
+      <Loader />
+    </div>    
+    
+    <router-view/>
+    
+    <!--<div>loader current status: {{this.$store.state.loading}}</div>
+     <Loader :show="showLoader"/>
+    <router-view/>
+    <button @click="show">change state</button> -->
   </div>
 </template>
 <script>
-import Loader from './components/Loader.vue'
+import Loader from "./components/Loader"
 export default {
-  data(){
-    return{
-      show:this.$store.state.loader.loading
-    }
-  },
+  
   components: { Loader },
   methods:{
     
   },
   computed: {
-    // show() {
-    //   console.log(this.$store.state.loader.loading)
-    //   return this.$store.getters.GET_LOADER;
-    // }
+      showLoader() {
+      return this.$store.state.loading;   
+    }
   },
   
 }

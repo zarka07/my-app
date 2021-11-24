@@ -4,11 +4,13 @@
     </div>
 </template>
 <script>
+
 export default {
     name: 'Loader',
     props: {
-        show: Boolean,
+       
     },
+    
 }
 </script>
 <style scoped>
