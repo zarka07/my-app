@@ -1,18 +1,18 @@
 import axios from 'axios'
-import { Store } from 'vuex'
+//import { Store } from 'vuex'
 import store from '../store'
 export default{
     
     methods:{
         
         async get(path, cb = null){
-            store.dispatch("showLoader")
+            store.dispatch("loader/showLoader")
             console.log('showLoader')
             return await axios
                 .get(process.env.VUE_APP_API_ENDPOINT_URL + path)
                 .then(response => cb!==null?cb(response):response)
                 .finally(() => {
-                    store.dispatch('hideLoader')
+                    store.dispatch('loader/hideLoader')
                     console.log('hideLoader')
                 })
         },

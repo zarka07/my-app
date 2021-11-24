@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     
-    <div v-if="show=showLoader">
+    <div v-if="showLoader">
       <Loader />
     </div>    
     
@@ -23,7 +23,7 @@ export default {
   },
   computed: {
       showLoader() {
-      return this.$store.state.loading;   
+      return this.$store.state.loader.loading;   
     }
   },
   
