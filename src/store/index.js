@@ -2,13 +2,11 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 Vue.use(Vuex)
-import loader from './modules/loader'
+import loader from './modules/loader.store'
 export default new Vuex.Store({
     modules:{
-        loader: loader
+        loader,
     },
-    state:{
-        loading: Boolean,
-    },
+    
     
 })

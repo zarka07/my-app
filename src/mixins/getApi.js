@@ -7,13 +7,13 @@ export default{
         
         async get(path, cb = null){
             store.dispatch("loader/showLoader")
-            console.log('showLoader')
+            //console.log('showLoader')
             return await axios
                 .get(process.env.VUE_APP_API_ENDPOINT_URL + path)
                 .then(response => cb!==null?cb(response):response)
                 .finally(() => {
                     store.dispatch('loader/hideLoader')
-                    console.log('hideLoader')
+                    //console.log('hideLoader')
                 })
         },
         /*async getPost(id){

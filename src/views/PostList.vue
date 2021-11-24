@@ -2,13 +2,11 @@
   <div class="postList">
     <h2>Posts</h2>
     <h4></h4>
-    <div v-for="post in posts" :key="post.id">
-      
+    <div v-for="el in post" :key="el.id">
       <div class="row">
-        
-          <router-link tag="h5" 
-            :to="{ name : 'Id', params: {id: post.id}}">
-            {{post.title}}
+          <router-link tag="h3"
+            :to="{ name : 'Id', params: {id: el.id}}">
+            {{el.title}}
           </router-link>
       </div>
     </div>
@@ -23,15 +21,24 @@ export default {
   mixins:[getApi],
   data(){
     return  {
-     posts:'',
+     posts:{},
      path:'posts/',
-     id: '2'
+     title:'',
+     post:[],
      }
   },
   methods:{
     async showPosts(path){
-      this.get(path+this.id)
-      //this.get(path+this.id,(posts)=>{console.log(posts)})
+      
+      let posts = await this.get(path)
+      let count = 0
+      for(let key in posts.data){
+        count++
+      }
+      for(let i=0;i<count;i++){       
+          this.post[i] = posts.data[i]
+          //console.log(this.post[i])
+      }
     },
     
   },

@@ -26,28 +26,33 @@ export default {
   name: 'Post',
   mixins:[getApi],
   data(){
-      return {post:'',
+      return {
+      post:'',
       title:'',
       id: this.$route.params.id, 
       comments:[],
       name: '',
       email: '',
       body: '',
-      path: this.id+'/',
-      commentsPath: this.id+'/comments'
+      path:'/comments',
+      commentsPath: this.id+this.path
       }
     },
   created(){
     this.showPosts(this.commentsPath);
   },
   methods:{
-      async showPosts(path){
-        this.get(path+this.id,(posts)=>{console.log(posts)})
+      async showPosts(commentsPath){
+        this.get(commentsPath)
       },
+      //(posts)=>{console.log(posts)}
       back(){
         this.$router.push({name:'PostList'})
       },
       
-    }
+    },
+  computed:{
+    
+  }
 }
 </script>
