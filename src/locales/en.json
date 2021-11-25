@@ -1,0 +1,20 @@
+{
+  "AppVue": {
+      "Language": "Language"
+  },
+  "PostlistVue": {
+      "Postlist": "Post list"
+  },
+  "PostVue": {
+      "Post": "Post #",
+      "Id": "Id",
+      "Title": "Title",
+      "Body": "Body",
+      "Comments": "Comments",
+      "Name": "Name",
+      "Email": "Email",
+      "Comment":"Comment",
+      "Back": "Back"
+  },
+  "Loader": "Loading"
+}
