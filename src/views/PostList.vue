@@ -1,6 +1,6 @@
 <template>
   <div class="postList">
-    <h2>Posts</h2>
+    <h2>{{$t ("PostlistVue.Postlist")}}</h2>
     <h4></h4>
     <ul v-for="post in post" :key="post.id" type="none">
           <router-link tag="li" :to="{ name : 'Id', params: {id: post.id}}">
@@ -22,8 +22,7 @@ export default {
   },
   methods:{
     async showPosts(path){
-      let posts = await this.get(path)
-      this.post = posts.data
+      this.post = await this.get(path)
     },
   },
   created(){

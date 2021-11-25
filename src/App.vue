@@ -1,23 +1,18 @@
 <template>
   <div id="app">
-    
+    <Header/>
     <div v-if="showLoader">
       <Loader />
     </div>    
-    
     <router-view/>
-    
-    <!--<div>loader current status: {{this.$store.state.loading}}</div>
-     <Loader :show="showLoader"/>
-    <router-view/>
-    <button @click="show">change state</button> -->
   </div>
 </template>
 <script>
 import Loader from "./components/Loader"
+import Header from "./components/Header"
 export default {
   
-  components: { Loader },
+  components: { Header, Loader },
   methods:{
     
   },
@@ -29,7 +24,7 @@ export default {
   
 }
 </script>
-<style>
+<style scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

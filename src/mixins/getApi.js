@@ -10,7 +10,8 @@ export default{
             //console.log('showLoader')
             return await axios
                 .get(process.env.VUE_APP_API_ENDPOINT_URL + path)
-                .then(response => cb!==null?cb(response):response)
+                .then(response => cb!==null?cb(response.data):response.data)
+                .catch()
                 .finally(() => {
                     store.dispatch('loader/hideLoader')
                     //console.log('hideLoader')

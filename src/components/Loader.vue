@@ -1,6 +1,6 @@
 <template>
     <div class="loader">
-        LOADER
+        {{$t("Loader")}}
     </div>
 </template>
 <script>

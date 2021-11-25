@@ -1,20 +1,20 @@
 <template>
   <div>
-        <h1> This is the post id {{ $route.params.id}}</h1>
+        <h1> {{$t("PostVue.Post")}} {{ $route.params.id}}</h1>
             <div class="row">
                 
-                <h1>post title:</h1> 
+                <h1>{{$t("PostVue.Title")}}:</h1> 
                 <p>{{post.title}}</p>
-                <h3>post body:</h3> 
+                <h3>{{$t("PostVue.Body")}}:</h3> 
                 <p>{{post.body}}</p>
-                <h4>comments: </h4>
+                <h4>{{$t("PostVue.Comments")}}: </h4>
                 <ul v-for="comment in comments" :key="comment.id" type="none">
-                    <li>id: {{comment.id}}</li>
-                    <li>name: {{comment.name}}</li>
-                    <li>email: {{comment.email}}</li>
-                    <li>body: {{comment.body}}</li>
+                    <li>{{$t("PostVue.Id")}}: {{comment.id}}</li>
+                    <li>{{$t("PostVue.Name")}}: {{comment.name}}</li>
+                    <li>{{$t("PostVue.Email")}}: {{comment.email}}</li>
+                    <li>{{$t("PostVue.Body")}}: {{comment.body}}</li>
                 </ul>
-                <button @click="back">Back</button>  
+                <button @click="back">{{$t("PostVue.Back")}}</button>  
             </div>
     </div>
 </template>
@@ -37,12 +37,10 @@ export default {
   },
   methods:{
       async showPost(path){
-        let post = await this.get(path)
-        this.post = post.data
+        this.post = await this.get(path)
       },
       async showComments(commentsPath){
-        let allComments = await this.get(commentsPath)
-        this.comments = allComments.data
+        this.comments = await this.get(commentsPath)
       },
       back(){
         this.$router.push({name:'PostList'})
