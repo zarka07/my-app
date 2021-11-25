@@ -8,15 +8,13 @@
                 <h3>post body:</h3> 
                 <p>{{post.body}}</p>
                 <h4>comments: </h4>
-                <div v-for="comment in comments" :key="comment.id">
-                    <p>{{comment.id}}</p>
-                    <p>{{comment.name}}</p>
-                    <p>{{comment.email}}</p>
-                    <p>{{comment.body}}</p>
-                </div>
-                <button @click="back">Back</button>
-            
-                 
+                <ul v-for="comment in comments" :key="comment.id" type="none">
+                    <li>id: {{comment.id}}</li>
+                    <li>name: {{comment.name}}</li>
+                    <li>email: {{comment.email}}</li>
+                    <li>body: {{comment.body}}</li>
+                </ul>
+                <button @click="back">Back</button>  
             </div>
     </div>
 </template>
@@ -27,32 +25,28 @@ export default {
   mixins:[getApi],
   data(){
       return {
-      post:'',
-      title:'',
-      id: this.$route.params.id, 
-      comments:[],
-      name: '',
-      email: '',
-      body: '',
-      path:'/comments',
-      commentsPath: this.id+this.path
+      post:{},
+      comments:{},
+      path:'posts/'+this.$route.params.id,
+      commentsPath: 'posts/'+this.$route.params.id+'/comments'
       }
     },
   created(){
-    this.showPosts(this.commentsPath);
+    this.showPost(this.path);
+    this.showComments(this.commentsPath)
   },
   methods:{
-      async showPosts(commentsPath){
-        this.get(commentsPath)
+      async showPost(path){
+        let post = await this.get(path)
+        this.post = post.data
       },
-      //(posts)=>{console.log(posts)}
+      async showComments(commentsPath){
+        let allComments = await this.get(commentsPath)
+        this.comments = allComments.data
+      },
       back(){
         this.$router.push({name:'PostList'})
       },
-      
     },
-  computed:{
-    
-  }
 }
 </script>
