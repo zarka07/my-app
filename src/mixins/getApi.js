@@ -7,11 +7,44 @@ export default{
         
         async get(path, cb = null){
             store.dispatch("loader/showLoader")
-            //console.log('showLoader')
             return await axios
                 .get(process.env.VUE_APP_API_ENDPOINT_URL + path)
                 .then(response => cb!==null?cb(response.data):response.data)
-                .catch()
+                .catch(error => {
+                    if(error.response.status){
+                        const statusCode = error.response.status
+                        switch (statusCode) {
+                            case 400:
+                            case 404:
+                                this.$store.dispatch("error/showError", statusCode)
+                                break;
+                            case 401:  
+                            case 403:
+                                alert('$t("Errors.403")')
+                                //Auth.logout()
+                                //this.$router.push({name:"auth"})
+                                break;
+                            case 422:
+                                alert('$t("Errors.422")')
+                                //this.$router.push({name:"auth"})
+                                break;
+                            case 500:
+                            case 501:
+                            case 502:
+                            case 503:
+                            case 504:
+                            case 505:
+                                alert('$t("Errors.500")')
+                                this.$router.go(-1)
+                                break;
+                            default:
+                                error({
+                                statusCode,
+                                
+                                })
+                        }       
+                    }
+                })
                 .finally(() => {
                     store.dispatch('loader/hideLoader')
                     //console.log('hideLoader')

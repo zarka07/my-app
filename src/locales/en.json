@@ -16,5 +16,18 @@
       "Comment":"Comment",
       "Back": "Back"
   },
-  "Loader": "Loading"
+  "Loader": "Loading",
+  "Errors": {
+        "400": "To resume the session, clear the cookies. If the error persists, contact technical support.",
+        
+        "403": "Sorry, you cannot view the content.",
+        "404": "The requested page does not exist.",
+        "405": "Error #:",
+        "410": "Sorry, the requested content has been removed.",
+        "411": "Error #:",
+        "415": "The format of the downloaded media is not supported, please select the appropriate format",
+        "416": "Error #:",
+        "422": "Validation failed.",
+        "500": "Service is not avalible"
+  }
 }

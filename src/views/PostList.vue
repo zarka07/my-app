@@ -1,13 +1,18 @@
 <template>
-  <div class="postList">
-    <h2>{{$t ("PostlistVue.Postlist")}}</h2>
-    <h4></h4>
-    <ul v-for="post in post" :key="post.id" type="none">
-          <router-link tag="li" :to="{ name : 'Id', params: {id: post.id}}">
+  <v-container class="postList">
+    <v-card>
+    <v-list-item two-line>
+      <v-list-item-content>
+        <v-list-item-title>{{$t("PostlistVue.Postlist")}}</v-list-item-title>
+        <v-list-item-subtitle v-for="post in post" :key="post.id">
+           <router-link tag="span" :to="{ name : 'Id', params: {id: post.id}}">
             {{post.title}}
           </router-link>
-    </ul>
-  </div>
+           </v-list-item-subtitle>
+      </v-list-item-content>
+    </v-list-item>
+    </v-card>
+  </v-container>
 </template>
 <script>
 import getApi from '../mixins/getApi'
@@ -16,7 +21,7 @@ export default {
   mixins:[getApi],
   data(){
     return  {
-     path:'posts/',
+     path:'posts',
      post:{},
      }
   },

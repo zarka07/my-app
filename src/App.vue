@@ -1,48 +1,48 @@
 <template>
-  <div id="app">
-    <Header/>
-    <div v-if="showLoader">
+  <v-app>
+    <v-app-bar
+        app
+        color="primary"
+        dark
+      ><Header/>
+    </v-app-bar>
+    <v-container v-if="showLoader">
       <Loader />
-    </div>    
-    <router-view/>
-  </div>
+    </v-container>
+    <v-main>
+      <v-alert v-if="this.$store.state.error.isError"
+        type="error"
+        :show="showError"
+        color="red"
+        dark
+        border="top"
+        icon="mdi-alert"
+        transition="scale-transition"
+      >
+        {{this.$store.state.error.statusCode}}
+      </v-alert>
+        <router-view/>
+      </v-main>
+  </v-app>
 </template>
+
 <script>
+import Header from './components/Header.vue';
 import Loader from "./components/Loader"
-import Header from "./components/Header"
 export default {
-  
   components: { Header, Loader },
-  methods:{
-    
-  },
+  name: 'App',
+
   computed: {
       showLoader() {
-      return this.$store.state.loader.loading;   
-    }
+        return this.$store.state.loader.loading;   
+      },
+      showError(){
+        return this.$store.state.error.statusCode
+        
+        
+      }
+      
   },
-  
-}
+};
 </script>
-<style scoped>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>

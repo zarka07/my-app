@@ -1,12 +1,24 @@
 <template>
-    <div>
-    <ul type="none">
-        <li class="changeLang" v-for="locale in locales" :key="locale" @click="changeLang(locale)" > 
-            {{$t("AppVue.Language")}}: {{locale}}
-        </li>
-    </ul>
-    
-    </div>
+    <div class="text-center">
+        <v-menu offset-y>
+            <template v-slot:activator="{ on, attrs }">
+                <v-btn
+                    color="primary"
+                    dark
+                    v-bind="attrs"
+                    v-on="on"
+                >
+                    {{$t("AppVue.Language")}}
+                </v-btn>
+            </template>
+        <v-list>
+            <v-list-item
+                v-for="locale in locales" :key="locale" @click="changeLang(locale)">
+            <v-list-item-title>{{$t("AppVue.Language")}}: {{locale}}</v-list-item-title>
+            </v-list-item>
+        </v-list>
+        </v-menu>
+    </div>      
 </template>
 
 <script>
@@ -30,13 +42,5 @@ export default({
 })
 </script>
 <style scoped>
-    .changeLang{
-        border:1px solid;
-        color:blue;
-        width:100px;
-        margin:5px;
-        text-decoration: none;
-        color: #459CE7;
-        cursor: pointer;
-    }
+    
 </style>

@@ -1,22 +1,35 @@
 <template>
-  <div>
-        <h1> {{$t("PostVue.Post")}} {{ $route.params.id}}</h1>
-            <div class="row">
-                
-                <h1>{{$t("PostVue.Title")}}:</h1> 
-                <p>{{post.title}}</p>
-                <h3>{{$t("PostVue.Body")}}:</h3> 
-                <p>{{post.body}}</p>
-                <h4>{{$t("PostVue.Comments")}}: </h4>
-                <ul v-for="comment in comments" :key="comment.id" type="none">
-                    <li>{{$t("PostVue.Id")}}: {{comment.id}}</li>
-                    <li>{{$t("PostVue.Name")}}: {{comment.name}}</li>
-                    <li>{{$t("PostVue.Email")}}: {{comment.email}}</li>
-                    <li>{{$t("PostVue.Body")}}: {{comment.body}}</li>
-                </ul>
-                <button @click="back">{{$t("PostVue.Back")}}</button>  
-            </div>
-    </div>
+<v-card
+    class="mx-auto"
+    tile
+  >
+    <v-list-item three-line>
+      <v-list-item-content>
+        <v-list-item-title>{{$t("PostVue.Post")}} {{ $route.params.id}}</v-list-item-title>
+        <v-spacer></v-spacer>
+        <v-list-item-subtitle>
+          <b>{{$t("PostVue.Title")}}</b>:   {{post.title}}
+        </v-list-item-subtitle>
+        <v-list-item-subtitle>
+          <b>{{$t("PostVue.Body")}}</b>:   {{post.body}}
+        </v-list-item-subtitle>
+        <v-list-item-subtitle>
+          <b>{{$t("PostVue.Comments")}}</b>:
+        </v-list-item-subtitle>
+        <v-list-item-subtitle v-for="comment in comments" :key="comment.id">
+          <b>{{$t("PostVue.Name")}}</b>:   {{comment.name}}
+          <b>{{$t("PostVue.Email")}}</b>:  {{comment.email}}
+          <b>{{$t("PostVue.Body")}}</b>:   {{comment.body}}
+        </v-list-item-subtitle>
+      </v-list-item-content>
+    </v-list-item>
+    <v-btn depressed
+      elevation="2"
+      text
+      x-small @click="back">{{$t("PostVue.Back")}}
+    </v-btn> 
+  </v-card>
+   
 </template>
 <script>
 import getApi from '../mixins/getApi'
