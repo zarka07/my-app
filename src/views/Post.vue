@@ -33,7 +33,7 @@
 </template>
 <script>
 import getApi from '../mixins/getApi'
-import getPosts from '../mixins/getPost'
+import getPosts from '../mixins/getPosts'
 export default {
   name: 'Post',
   mixins:[getApi, getPosts],

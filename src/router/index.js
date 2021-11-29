@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import PostList from '../views/PostList.vue'
-
+import VueScrollTo from 'vue-scrollto'
 
 Vue.use(VueRouter)
 
@@ -29,6 +29,14 @@ const routes = [
 const router = new VueRouter({
   routes,
   mode: "history",
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      VueScrollTo.scrollTo("#app", 500, { offset: savedPosition.y });
+      return savedPosition;
+    } else {
+      VueScrollTo.scrollTo("#app");
+    }
+  },
 })
 
 export default router
