@@ -16,22 +16,17 @@
 </template>
 <script>
 import getApi from '../mixins/getApi'
+import getPosts from '../mixins/getPosts'
 export default {
   name: 'PostList',
-  mixins:[getApi],
+  mixins:[getApi, getPosts],
   data(){
     return  {
      path:'posts',
      post:{},
      }
   },
-  methods:{
-    async showPosts(path){
-      this.post = await this.get(path)
-    },
-  },
-  created(){
-    this.showPosts(this.path);
-  },
+  
+  
 }
 </script>

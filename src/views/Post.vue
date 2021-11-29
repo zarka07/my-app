@@ -33,9 +33,10 @@
 </template>
 <script>
 import getApi from '../mixins/getApi'
+import getPosts from '../mixins/getPost'
 export default {
   name: 'Post',
-  mixins:[getApi],
+  mixins:[getApi, getPosts],
   data(){
       return {
       post:{},
@@ -45,13 +46,9 @@ export default {
       }
     },
   created(){
-    this.showPost(this.path);
     this.showComments(this.commentsPath)
   },
   methods:{
-      async showPost(path){
-        this.post = await this.get(path)
-      },
       async showComments(commentsPath){
         this.comments = await this.get(commentsPath)
       },

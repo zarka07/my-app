@@ -25,7 +25,7 @@ export default{
                                 //this.$router.push({name:"auth"})
                                 break;
                             case 422:
-                                alert('$t("Errors.422")')
+                                this.$store.dispatch("error/showError", statusCode)
                                 //this.$router.push({name:"auth"})
                                 break;
                             case 500:
@@ -34,13 +34,12 @@ export default{
                             case 503:
                             case 504:
                             case 505:
-                                alert('$t("Errors.500")')
+                                this.$store.dispatch("error/showError", statusCode)
                                 this.$router.go(-1)
                                 break;
                             default:
                                 error({
                                 statusCode,
-                                
                                 })
                         }       
                     }
