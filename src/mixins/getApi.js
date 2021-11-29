@@ -1,10 +1,7 @@
 import axios from 'axios'
-//import { Store } from 'vuex'
 import store from '../store'
 export default{
-    
     methods:{
-        
         async get(path, cb = null){
             store.dispatch("loader/showLoader")
             return await axios
@@ -46,7 +43,6 @@ export default{
                 })
                 .finally(() => {
                     store.dispatch('loader/hideLoader')
-                    //console.log('hideLoader')
                 })
         },
         /*async getPost(id){

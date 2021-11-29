@@ -6,9 +6,9 @@
         dark
       ><Header/>
     </v-app-bar>
-    <v-container v-if="showLoader">
+    <v-overlay v-if="showLoader">
       <Loader />
-    </v-container>
+    </v-overlay>
     <v-main>
       <v-alert v-if="this.$store.state.error.isError"
         type="error"
@@ -32,17 +32,13 @@ import Loader from "./components/Loader"
 export default {
   components: { Header, Loader },
   name: 'App',
-
   computed: {
       showLoader() {
         return this.$store.state.loader.loading;   
       },
       showError(){
         return this.$store.state.error.statusCode
-        
-        
       }
-      
   },
 };
 </script>

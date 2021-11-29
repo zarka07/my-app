@@ -1,6 +1,5 @@
 <template>
-
-    <v-main>
+    <v-main style="font-size:50px;">
         {{$t("Loader")}}
     </v-main>
 </template>
