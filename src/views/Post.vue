@@ -1,5 +1,6 @@
 <template>
-<v-card
+
+<v-card 
     class="mx-auto"
     tile
   >
@@ -23,22 +24,35 @@
         </v-list-item-subtitle>
       </v-list-item-content>
     </v-list-item>
-    <v-btn depressed
+    
+    <v-btn depressed block color="primary"
+      elevation="2"
+      text
+      x-small @click="showModal">{{$t('Agreement.ShowAgreement')}}
+    </v-btn>
+    <v-btn depressed block color="primary"
       elevation="2"
       text
       x-small @click="back">{{$t("PostVue.Back")}}
     </v-btn> 
+    <modal class="modal" v-if="this.$store.state.modal.show">
+      <div class="modalContent" ><Agreement /></div>
+    </modal>
+
   </v-card>
-   
+
 </template>
 <script>
 import getApi from '../mixins/getApi'
 import getPosts from '../mixins/getPosts'
+import Agreement from '../components/Agreement.vue'
 export default {
   name: 'Post',
+  components:{Agreement},
   mixins:[getApi, getPosts],
   data(){
       return {
+      isOpen:false,
       post:{},
       comments:{},
       path:'posts/'+this.$route.params.id,
@@ -55,6 +69,37 @@ export default {
       back(){
         this.$router.push({name:'PostList'})
       },
+      showModal(){
+        this.$store.dispatch("modal/showModal")
+      }
     },
 }
 </script>
+<style scoped>
+  .modal{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    overflow: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    z-index: 99;
+    padding:30px 0;
+    background: rgb(192, 187, 187);
+    
+  }
+  .modalContent{
+    margin:auto;
+    width: 600px;
+    max-width: 100%
+  }
+  .v-btn{
+    margin:5px;
+  }
+</style>

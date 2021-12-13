@@ -1,12 +1,13 @@
 <template>
     <div class="text-center">
-        <v-menu offset-y>
+        <v-menu offset-y transition="scale-transition">
             <template v-slot:activator="{ on, attrs }">
                 <v-btn
                     color="primary"
                     dark
                     v-bind="attrs"
                     v-on="on"
+                    
                 >
                     {{$t("AppVue.Language")}}
                 </v-btn>
@@ -18,6 +19,7 @@
             </v-list-item>
         </v-list>
         </v-menu>
+
     </div>      
 </template>
 

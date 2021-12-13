@@ -3,7 +3,8 @@
       "Language": "Language"
   },
   "PostlistVue": {
-      "Postlist": "Post list"
+      "Postlist": "Post list",
+      "NextItems": "Next 20 items >"
   },
   "PostVue": {
       "Post": "Post #",
@@ -16,7 +17,14 @@
       "Comment":"Comment",
       "Back": "Back"
   },
-  "Loader": "Loading",
+  "Loader": "Loading"
+  ,
+  "Agreement":{
+    "ShowAgreement": "Show agreement",
+    "NotAgree": "Not agree",
+    "Agree": "Agree",
+    "Molodec": "Good boy"
+    },
   "Errors": {
         "400": "To resume the session, clear the cookies. If the error persists, contact technical support.",
         
