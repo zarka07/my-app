@@ -1,13 +1,13 @@
 <template>
-    <div class="text-center">
-        <v-menu offset-y transition="scale-transition">
+    <div style="margin: 0 0 0 10px" class="text-center">
+        <v-menu offset-y transition="scale-transition" >
             <template v-slot:activator="{ on, attrs }">
                 <v-btn
-                    color="primary"
+                    color="green"
                     dark
                     v-bind="attrs"
                     v-on="on"
-                    
+                    style="font-size: 10px; width: 20px; height: 20px;"
                 >
                     {{$t("AppVue.Language")}}
                 </v-btn>
@@ -44,5 +44,7 @@ export default({
 })
 </script>
 <style scoped>
-    
+    ::v-deep v-btn{
+        font-size: 10px;
+    }
 </style>

@@ -1,6 +1,7 @@
 {
     "AppVue": {
-        "Language": "Язык"
+        "Language": "Язык",
+        "ConnectMe": "Напишите мне "
     },
     "PostlistVue": {
         "Postlist": "Список публикаций",

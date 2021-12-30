@@ -1,6 +1,7 @@
 {
   "AppVue": {
-      "Language": "Language"
+      "Language": "Language",
+      "ConnectMe": "Get connect with me: "
   },
   "PostlistVue": {
       "Postlist": "Post list",

@@ -13,23 +13,12 @@
       </v-list-item-content>
     </v-list-item>
     </v-card>
-    <!-- <div class="text-center mt-5">
-     <v-btn
-        rounded
-        color="primary"
-        dark
-        @click="counter+=1"
-      >
-        {{$t("PostlistVue.NextItems")}}
-      </v-btn> 
-    </div> -->
     <div class="text-center" style="margin-top:10px">
       <v-pagination 
-        color="primary"
+        color="green"
         v-model="pageNumber"
         circle
         :length="pagesCount-1"
-        
         @next="next"
         @previous="previous"
       ></v-pagination>
@@ -48,7 +37,7 @@ export default {
     return  {
      path:'posts',
      post:[],
-     pageNumber:1,
+     pageNumber:+this.$route.query.pageNumber || 1,
      postsPerPage:10
      }
   },
@@ -59,7 +48,7 @@ export default {
     
     previous(){
       this.pageNumber-1;
-    },
+      },
   },
   computed:{
     pagesCount(){

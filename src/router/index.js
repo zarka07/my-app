@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import PostList from '../views/PostList.vue'
+import CV from '../views/CV.vue'
 import VueScrollTo from 'vue-scrollto'
 
 Vue.use(VueRouter)
@@ -10,6 +11,11 @@ const routes = [
     path: '/',
     name: 'PostList',
     component: PostList
+  },
+  {
+    path: '/CV',
+    name: 'CV',
+    component: () => import((/* webpackChunkName: "CV.vue", webpackMode: "lazy" */'../views/CV.vue'))
   },
   {
     path: '/post/:id',
