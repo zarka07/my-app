@@ -38,14 +38,16 @@
     <modal class="modal" v-if="this.$store.state.modal.show">
       <div class="modalContent" ><Agreement /></div>
     </modal>
-
+  <div id="map" ref="map" style="height: 300px;"></div>
   </v-card>
 
 </template>
 <script>
-import getApi from '../mixins/getApi'
-import getPosts from '../mixins/getPosts'
-import Agreement from '../components/Agreement.vue'
+import getApi from '../mixins/getApi';
+import getPosts from '../mixins/getPosts';
+import Agreement from '../components/Agreement.vue';
+import Wrld from 'wrld.js';
+
 export default {
   name: 'Post',
   components:{Agreement},
@@ -73,6 +75,17 @@ export default {
         this.$store.dispatch("modal/showModal")
       }
     },
+  mounted(){
+    var map = Wrld.map('map', "721e1d835e3d535b646a4aef4d94600d",{
+      center: [49.9836, 36.2210],
+      zoom: 17
+    });
+    var weathers = [Wrld.themes.weather.Clear, Wrld.themes.weather.Overcast, Wrld.themes.weather.Rainy, Wrld.themes.weather.Snowy];
+            var weatherIndex = 3;
+            map.themes.setWeather(weathers[weatherIndex]);
+            weatherIndex = (weatherIndex + 1) % weathers.length;
+    
+  }
 }
 </script>
 <style scoped>

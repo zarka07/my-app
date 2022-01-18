@@ -30,6 +30,7 @@
       <transition name="fade">
         <router-view/>
       </transition>
+      
     </v-main>
 
     <v-footer padless >
@@ -63,6 +64,7 @@ export default {
         return this.$store.state.error.statusCode
       }
   },
+  
 };
 </script>
 <style scoped>
